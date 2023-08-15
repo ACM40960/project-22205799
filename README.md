@@ -16,7 +16,7 @@ They are Border Collie, French Bulldog, Pomeranian, Samoyed, Shiba Dog, Siberian
 
 So make sure you choose images from these 10 breeds for testing.
 
-![](https://github.com/ACM40960/project-22205799/images/10_dogs.jpg?raw=true)
+![](https://github.com/ACM40960/project-22205799/blob/5ad736aab0b63bb51cb0c18f358e3dd19d2dd442/images/10_dogs.jpg)
 
 ## Part I
 
@@ -53,7 +53,7 @@ Note that you can only choose one image at a time, either from 'data/test' folde
 
 As mentioned at the beginning, it is best to choose images from these 10 dog breeds for testing.
 
-![](https://github.com/ACM40960/project-22205799/images/dog_recognition.gif?raw=true)
+![](https://github.com/ACM40960/project-22205799/blob/5ad736aab0b63bb51cb0c18f358e3dd19d2dd442/images/dog_recognition.gif)
 
 ### A brief description of other useful files
 
