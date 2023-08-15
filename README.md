@@ -34,6 +34,7 @@ Data augmentation is a technique used to artificially increase the size of the t
 2. install packages in the R environment: shiny, keras, tensorflow
 3. need Python 3.9 or above, and install tensorflow in Python environment (version 2.13.0 below, not including 2.13.0)
 4. change the path of python.exe in CNN_APP.R
+5. set the directory where CNN_APP.R is located as the working directory of R environment
 
 ```python
 library(shiny)
@@ -45,9 +46,9 @@ reticulate::use_python('C:/ProgramData/Anaconda3/python.exe') # set to your pyth
 
 ### How to use
 
-1. Run the CNN_APP.R script, make sure it is in the same directory as the 'data' and 'model' folders before running.
+1. Run the CNN_APP.R script, make sure it is in the same directory as the 'data' and 'model' folders before running
 
-2. Proceed as shown below. 
+2. Proceed as shown below
 
 Note that you can only choose one image at a time, either from 'data/test' folder or from the internet. 
 
