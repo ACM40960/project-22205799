@@ -84,6 +84,9 @@ fit <- model %>% fit(
   verbose = 0
 )
 
+# Save the model
+save_model_tf(model, "model/") # no non-English letters in the path
+
 ## Training and predictive performance visualization
 
 # check accuracy and loss learning curve
