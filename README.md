@@ -16,7 +16,7 @@ They are Border Collie, French Bulldog, Pomeranian, Samoyed, Shiba Dog, Siberian
 
 So make sure you choose images from these 10 breeds for testing.
 
-![](https://github.com/ACM40960/project-22205799/blob/5ad736aab0b63bb51cb0c18f358e3dd19d2dd442/images/10_dogs.jpg)
+![](https://github.com/ACM40960/project-22205799/blob/479e333fcffdbb143c8bd77640894a50f4cde309/images/10_dogs.jpg)
 
 ## Part I
 
@@ -34,8 +34,6 @@ Data augmentation is a technique used to artificially increase the size of the t
 2. install packages in the R environment: shiny, keras, tensorflow
 3. need Python 3.9 or above, and install tensorflow in Python environment (version 2.13.0 below, not including 2.13.0)
 4. change the path of python.exe in CNN_APP.R
-5. set the directory where CNN_APP.R is located as the working directory of R environment
-
 ```python
 library(shiny)
 library(base64enc)
@@ -43,6 +41,7 @@ library(keras)
 library(tensorflow)
 reticulate::use_python('C:/ProgramData/Anaconda3/python.exe') # set to your python.exe
 ```
+5. set the directory where CNN_APP.R is located as the working directory of R environment
 
 ### How to use
 
@@ -50,11 +49,11 @@ reticulate::use_python('C:/ProgramData/Anaconda3/python.exe') # set to your pyth
 
 2. Proceed as shown below
 
-Note that you can only choose one image at a time, either from 'data/test' folder or from the internet. 
+Note that you can only choose one image at a time, either from 'data/test' folder or from the internet. As mentioned at the beginning, it is best to choose images from these 10 dog breeds for testing.
 
-As mentioned at the beginning, it is best to choose images from these 10 dog breeds for testing.
+The biggest red font of breed stands for the most likely breed predicted by the model.
 
-![](https://github.com/ACM40960/project-22205799/blob/5ad736aab0b63bb51cb0c18f358e3dd19d2dd442/images/dog_recognition.gif)
+![](https://github.com/ACM40960/project-22205799/blob/479e333fcffdbb143c8bd77640894a50f4cde309/images/dog_recognition.gif)
 
 ### A brief description of other useful files
 
