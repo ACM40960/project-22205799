@@ -1,0 +1,32 @@
+﻿
+<annotation>
+	<folder>1121-n000002-French_bulldog</folder>
+	<filename>n101129.jpg</filename>
+	<source>
+		<database>THU-Dogs database</database>
+	</source>
+	<size>
+		<width>500</width>
+		<height>375</height>
+		<depth>3</depth>
+	</size>
+	<segment>0</segment>
+	<object>
+	<name>French_bulldog</name>
+	<pose>Unspecified</pose>
+	<truncated>0</truncated>
+	<difficult>0</difficult>
+	<headbndbox>
+		<xmin>89</xmin>
+		<ymin>14</ymin>
+		<xmax>277</xmax>
+		<ymax>262</ymax>
+	</headbndbox>
+	<bodybndbox>
+		<xmin>89</xmin>
+		<ymin>14</ymin>
+		<xmax>447</xmax>
+		<ymax>371</ymax>
+	</bodybndbox>
+</object>
+</annotation>

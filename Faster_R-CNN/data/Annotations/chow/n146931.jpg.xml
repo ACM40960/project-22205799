@@ -1,0 +1,32 @@
+﻿
+<annotation>
+	<folder>329-n000119-chow</folder>
+	<filename>n146931.jpg</filename>
+	<source>
+		<database>THU-Dogs database</database>
+	</source>
+	<size>
+		<width>500</width>
+		<height>375</height>
+		<depth>3</depth>
+	</size>
+	<segment>0</segment>
+	<object>
+	<name>chow</name>
+	<pose>Unspecified</pose>
+	<truncated>0</truncated>
+	<difficult>0</difficult>
+	<headbndbox>
+		<xmin>159</xmin>
+		<ymin>2</ymin>
+		<xmax>375</xmax>
+		<ymax>204</ymax>
+	</headbndbox>
+	<bodybndbox>
+		<xmin>151</xmin>
+		<ymin>9</ymin>
+		<xmax>436</xmax>
+		<ymax>337</ymax>
+	</bodybndbox>
+</object>
+</annotation>

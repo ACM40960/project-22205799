@@ -1,0 +1,32 @@
+﻿
+<annotation>
+	<folder>1160-n000003-Siberian_husky</folder>
+	<filename>n102352.jpeg</filename>
+	<source>
+		<database>THU-Dogs database</database>
+	</source>
+	<size>
+		<width>441</width>
+		<height>331</height>
+		<depth>3</depth>
+	</size>
+	<segment>0</segment>
+	<object>
+	<name>Siberian_husky</name>
+	<pose>Unspecified</pose>
+	<truncated>0</truncated>
+	<difficult>0</difficult>
+	<headbndbox>
+		<xmin>85</xmin>
+		<ymin>30</ymin>
+		<xmax>311</xmax>
+		<ymax>239</ymax>
+	</headbndbox>
+	<bodybndbox>
+		<xmin>42</xmin>
+		<ymin>0</ymin>
+		<xmax>441</xmax>
+		<ymax>331</ymax>
+	</bodybndbox>
+</object>
+</annotation>

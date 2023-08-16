@@ -1,0 +1,32 @@
+﻿
+<annotation>
+	<folder>1936-n000005-Pomeranian</folder>
+	<filename>n104693.jpg</filename>
+	<source>
+		<database>THU-Dogs database</database>
+	</source>
+	<size>
+		<width>357</width>
+		<height>500</height>
+		<depth>3</depth>
+	</size>
+	<segment>0</segment>
+	<object>
+	<name>Pomeranian</name>
+	<pose>Unspecified</pose>
+	<truncated>0</truncated>
+	<difficult>0</difficult>
+	<headbndbox>
+		<xmin>57</xmin>
+		<ymin>57</ymin>
+		<xmax>312</xmax>
+		<ymax>259</ymax>
+	</headbndbox>
+	<bodybndbox>
+		<xmin>20</xmin>
+		<ymin>39</ymin>
+		<xmax>357</xmax>
+		<ymax>500</ymax>
+	</bodybndbox>
+</object>
+</annotation>

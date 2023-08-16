@@ -1,0 +1,32 @@
+﻿
+<annotation>
+	<folder>2594-n000109-Border_collie</folder>
+	<filename>n133640.jpeg</filename>
+	<source>
+		<database>THU-Dogs database</database>
+	</source>
+	<size>
+		<width>621</width>
+		<height>470</height>
+		<depth>3</depth>
+	</size>
+	<segment>0</segment>
+	<object>
+	<name>Border_collie</name>
+	<pose>Unspecified</pose>
+	<truncated>0</truncated>
+	<difficult>0</difficult>
+	<headbndbox>
+		<xmin>413</xmin>
+		<ymin>63</ymin>
+		<xmax>540</xmax>
+		<ymax>215</ymax>
+	</headbndbox>
+	<bodybndbox>
+		<xmin>47</xmin>
+		<ymin>86</ymin>
+		<xmax>555</xmax>
+		<ymax>408</ymax>
+	</bodybndbox>
+</object>
+</annotation>

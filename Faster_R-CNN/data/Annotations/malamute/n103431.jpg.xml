@@ -1,0 +1,32 @@
+﻿
+<annotation>
+	<folder>1324-n000004-malamute</folder>
+	<filename>n103431.jpg</filename>
+	<source>
+		<database>THU-Dogs database</database>
+	</source>
+	<size>
+		<width>500</width>
+		<height>375</height>
+		<depth>3</depth>
+	</size>
+	<segment>0</segment>
+	<object>
+	<name>malamute</name>
+	<pose>Unspecified</pose>
+	<truncated>0</truncated>
+	<difficult>0</difficult>
+	<headbndbox>
+		<xmin>246</xmin>
+		<ymin>172</ymin>
+		<xmax>328</xmax>
+		<ymax>270</ymax>
+	</headbndbox>
+	<bodybndbox>
+		<xmin>146</xmin>
+		<ymin>166</ymin>
+		<xmax>331</xmax>
+		<ymax>357</ymax>
+	</bodybndbox>
+</object>
+</annotation>

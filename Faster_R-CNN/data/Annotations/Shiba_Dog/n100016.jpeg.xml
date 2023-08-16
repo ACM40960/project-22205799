@@ -1,0 +1,32 @@
+﻿
+<annotation>
+	<folder>1043-n000001-Shiba_Dog</folder>
+	<filename>n100016.jpeg</filename>
+	<source>
+		<database>THU-Dogs database</database>
+	</source>
+	<size>
+		<width>281</width>
+		<height>422</height>
+		<depth>3</depth>
+	</size>
+	<segment>0</segment>
+	<object>
+	<name>Shiba_Dog</name>
+	<pose>Unspecified</pose>
+	<truncated>0</truncated>
+	<difficult>0</difficult>
+	<headbndbox>
+		<xmin>117</xmin>
+		<ymin>175</ymin>
+		<xmax>168</xmax>
+		<ymax>240</ymax>
+	</headbndbox>
+	<bodybndbox>
+		<xmin>57</xmin>
+		<ymin>162</ymin>
+		<xmax>184</xmax>
+		<ymax>327</ymax>
+	</bodybndbox>
+</object>
+</annotation>
