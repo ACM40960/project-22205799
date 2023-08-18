@@ -9,6 +9,8 @@ output: html_document
 library(keras)
 library(tensorflow)
 library(pROC)
+library(ggplot2)
+library(stringr)
 reticulate::use_python('C:/ProgramData/Anaconda3/python.exe')
 reticulate::py_config() # tensorflow version 2.12.0
 ```
@@ -174,17 +176,35 @@ x_test <- image_prep(test_generator$filepaths)
 y_test <- to_categorical(test_generator$labels)
 # test performance
 model %>% evaluate(x_test, y_test, verbose = 0)
-# look at classification table
-class_labels <- names(test_generator$class_indices)
-class_y <- class_labels[max.col(y_test)]
+# actual and predicted class labels 
+class_labels <- names(test_generator$class_indices) %>%
+  gsub("_", " ", .) %>% str_to_title()
+class_y <- class_labels[max.col(y_test)] # actual class labels
 class_hat_idx <- model %>% predict( x_test, verbose = 0) %>% max.col()
-class_hat <- class_labels[class_hat_idx]
+class_hat <- class_labels[class_hat_idx] # predicted class labels
 ```
 
-```{r 5, warning=FALSE, message=FALSE}
+```{r 5}
 # Confusion Matrix
 tab <- as.matrix(table(Actual = class_y, Predicted = class_hat))
-tab
+plt <- as.data.frame(tab)
+plt$Predicted <- factor(plt$Predicted, levels=rev(levels(plt$Predicted)))
+class_labels_ordered <- sort(class_labels)
+ggplot(plt, aes(Predicted,Actual, fill= Freq)) +
+  geom_tile() + geom_text(aes(label=Freq)) +
+  scale_fill_gradient(low="white", high="#009194") +
+  labs(x = "Predicted",y = "Actual") +
+  scale_y_discrete(labels=class_labels_ordered) +
+  theme(axis.text.x=element_blank(),
+        axis.ticks.x=element_blank() 
+  )
+```
+
+Most of the cells in the primary diagonal (number of correct recognitions) have higher values.
+
+Most of the cells not in the primary diagonal (number of incorrect recognitions) have lower values.
+
+```{r 6, warning=FALSE, message=FALSE}
 # overall accuracy
 accuracy <- sum(diag(tab))/sum(tab)
 accuracy
@@ -200,20 +220,20 @@ auc <- multiclass.roc(class_y, class_hat_idx)
 auc$auc
 # roc curve
 roc(class_y, class_hat_idx, plot = TRUE, legacy.axes = TRUE,
-               levels=c('Border_collie', 'French_bulldog'), percent = TRUE, 
-    main = "ROC curve for Border_collie and French_bulldog",
+               levels=c('Border Collie', 'French Bulldog'), percent = TRUE, 
+    main = "ROC curve for Border Collie and French Bulldog",
     xlab = "False positive rate",
     ylab = "True positive rate", col = "#377eb8", lwd = 2,
     print.auc = TRUE)
 # find the 1st, 2nd and 3rd most likely class
-class_labels_ordered <- sort(class_labels)
 ranks <- t( apply(tab, 1, function(x) {
-  class_labels_ordered[ order(x, decreasing = TRUE)[1:3]] } ) )
+  class_labels_ordered[ order(x, decreasing = TRUE)[1:3]] } ) ) %>%
+  as.data.frame() %>% setNames(c("1st", "2nd", "3rd"))
 ranks
 ```
 
 We can see that most dogs correctly matched their first most likely class.
 
-The mismatches of ‘chow’ and ‘pomeranian’ are most likely due to the similarity of coat colour between them and other dog breeds like ‘golden_retriever’ or ‘Samoyed’.
+The mismatch of ‘Pomeranian’ is most likely due to the similarity of coat colour between it and other dog breeds like ‘Samoyed’. Although we know a Pomeranian is much smaller than a Samoyed, because there is only one dog in an image, the machine can not distinguish which is smaller or larger.
 
-However, 'malamute' and 'Siberian_husky' are supposed to be very similar breeds. Most people have trouble telling the difference, let alone the machine. It is a great challenge for the model to classify the two dog breeds correctly.
+However, 'Malamute' and 'Siberian Husky' are supposed to be very similar breeds. Most people have trouble telling the difference, let alone the machine. It is a great challenge for the model to classify the two dog breeds correctly.

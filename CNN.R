@@ -1,6 +1,8 @@
 library(keras)
 library(tensorflow)
 library(pROC)
+library(ggplot2)
+library(stringr)
 reticulate::use_python('C:/ProgramData/Anaconda3/python.exe')
 reticulate::py_config() # tensorflow version 2.12.0
 
@@ -152,15 +154,26 @@ x_test <- image_prep(test_generator$filepaths)
 y_test <- to_categorical(test_generator$labels)
 # test performance
 model %>% evaluate(x_test, y_test, verbose = 0)
-# look at classification table
-class_labels <- names(test_generator$class_indices)
-class_y <- class_labels[max.col(y_test)]
+# actual and predicted class labels 
+class_labels <- names(test_generator$class_indices) %>%
+  gsub("_", " ", .) %>% str_to_title()
+class_y <- class_labels[max.col(y_test)] # actual class labels
 class_hat_idx <- model %>% predict( x_test, verbose = 0) %>% max.col()
-class_hat <- class_labels[class_hat_idx]
+class_hat <- class_labels[class_hat_idx] # predicted class labels
 
 # Confusion Matrix
 tab <- as.matrix(table(Actual = class_y, Predicted = class_hat))
-tab
+plt <- as.data.frame(tab)
+plt$Predicted <- factor(plt$Predicted, levels=rev(levels(plt$Predicted)))
+class_labels_ordered <- sort(class_labels)
+ggplot(plt, aes(Predicted,Actual, fill= Freq)) +
+  geom_tile() + geom_text(aes(label=Freq)) +
+  scale_fill_gradient(low="white", high="#009194") +
+  labs(x = "Predicted",y = "Actual") +
+  scale_y_discrete(labels=class_labels_ordered) +
+  theme(axis.text.x=element_blank(),
+        axis.ticks.x=element_blank() 
+  )
 # overall accuracy
 accuracy <- sum(diag(tab))/sum(tab)
 accuracy
@@ -176,15 +189,14 @@ auc <- multiclass.roc(class_y, class_hat_idx)
 auc$auc
 # roc curve
 roc(class_y, class_hat_idx, plot = TRUE, legacy.axes = TRUE,
-               levels=c('Border_collie', 'French_bulldog'), percent = TRUE, 
-    main = "ROC curve for Border_collie and French_bulldog",
+               levels=c('Border Collie', 'French Bulldog'), percent = TRUE, 
+    main = "ROC curve for Border Collie and French Bulldog",
     xlab = "False positive rate",
     ylab = "True positive rate", col = "#377eb8", lwd = 2,
     print.auc = TRUE)
 # find the 1st, 2nd and 3rd most likely class
-class_labels_ordered <- sort(class_labels)
 ranks <- t( apply(tab, 1, function(x) {
-  class_labels_ordered[ order(x, decreasing = TRUE)[1:3]] } ) )
+  class_labels_ordered[ order(x, decreasing = TRUE)[1:3]] } ) ) %>%
+  as.data.frame() %>% setNames(c("1st", "2nd", "3rd"))
 ranks
-
 
