@@ -55,7 +55,7 @@ Note that you can only choose one image at a time, either from 'data/test' folde
 
 The biggest red font of breed stands for the most likely breed predicted by the model.
 
-![](https://github.com/ACM40960/project-22205799/blob/c0f1f39f12dab96d2c09abbb4c65d5e265bf1a81/images/dog_recognition.gif)
+![](https://github.com/ACM40960/project-22205799/blob/fdc30dfa53b1929260b0db0fc059bc742bc8ffaf/images/dog_recognition.gif)
 
 ### A brief description of other useful files
 
