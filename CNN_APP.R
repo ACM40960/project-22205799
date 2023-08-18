@@ -1,4 +1,5 @@
 library(shiny)
+library(shinyjs)
 library(base64enc)
 library(keras)
 library(tensorflow)
@@ -13,8 +14,11 @@ ui <- fluidPage(
       uiOutput('image')
     ),
     mainPanel(
-      actionButton("button", "Predict", icon("paper-plane"), 
-                   style="color: #fff; background-color: #337ab7; border-color: #2e6da4"),
+      useShinyjs(),  # Set up shinyjs
+      actionButton("button_1", "Predict", icon("paper-plane"), 
+              style="color: #fff; background-color: #337ab7; border-color: #2e6da4;"),
+      actionButton("button_2", "Clear", icon("paper-plane"), 
+              style="color: #fff; background-color: #337ab7; border-color: #2e6da4;"),
       br(),
       span(textOutput("class_1"), style = "color:red; font-size:40px; 
            font-family:arial; font-style:italic"),
@@ -29,7 +33,7 @@ ui <- fluidPage(
   )
 )
 
-server <- function(input,output) {
+server <- function(input, output, session) {
   
   # load the model
   model <- load_model_tf('model/') # no non-English letters in the path
@@ -54,7 +58,7 @@ server <- function(input,output) {
   })
   
   # Take an action every time 'predict' button is pressed;
-  observeEvent(input$button, {
+  observeEvent(input$button_1, {
     # convert image to array
     path = input$file$datapath
     img_test_app <- image_load(path, target_size = c(64, 64), 
@@ -103,7 +107,31 @@ server <- function(input,output) {
     }, deleteFile = FALSE
     )
     # ---------------------------------- display the predicted class and image
+    
+    # show the predicted class and image
+    show("class_1")
+    show("class_2")
+    show("class_3")
+    show("image_1")
+    show("image_2")
+    show("image_3")
+  })
+  
+  # Take an action every time 'clear' button is pressed;
+  observeEvent(input$button_2, {
+    # hide the predicted class and image
+    hide("class_1")
+    hide("class_2")
+    hide("class_3")
+    hide("image_1")
+    hide("image_2")
+    hide("image_3")
+  })
+  
+  session$onSessionEnded(function() {
+    stopApp()
   })
 }
+
 
 shinyApp(ui, server)
